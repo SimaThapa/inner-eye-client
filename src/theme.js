@@ -9,7 +9,7 @@ const theme = createTheme({
       main: "#743d72",
       secondary_300:"#eeeeee",
       secondary_400:"#480765",
-      secondary_600:"#6a1067" // BLACK COLOR
+      secondary_600:"#6a1067" 
     },
     tertiary: {
       main: "#045307", // GREEN COLOR

@@ -109,12 +109,12 @@ function NavBar() {
                 height: "25px",
               }}
             />
-            <Box sx={{ mx: "0.2rem", display: "flex", alignItems: "center" }}>
-              <InstagramIcon />
-              <FacebookIcon />
-              <YouTubeIcon />
-              <LinkedInIcon />
-              <PinterestIcon />
+            <Box sx={{ mx: "0.2rem", display: "flex", alignItems: "center"  }}>
+              <InstagramIcon sx={{color:"orange"}}  />
+              <FacebookIcon sx={{color:"blue"}}/>
+              <YouTubeIcon sx={{color:"#FA0505"}} />
+              <LinkedInIcon sx={{color:"#78A1DE"}}/>
+              <PinterestIcon sx={{color:"red"}} />
             </Box>
             <Divider
               orientation="vertical"

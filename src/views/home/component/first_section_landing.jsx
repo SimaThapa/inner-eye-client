@@ -23,7 +23,7 @@ const description=(
         fontWeight: "200",
         width:"100%",
         letterSpacing: "0em",
-        border:"2px solid black"
+        // border:"2px solid black"
       }}
         >
             Nestled in the lap of the Himalayas in Nepal, Inner Eye is not just a retreat; 
@@ -62,6 +62,7 @@ return (
 <Box sx={{
   paddingLeft:"70px",
   paddingRight:"70px",
+  backgroundColor:"#F3ECF1"
   
 }}> 
 {/* mobile view */}
@@ -137,9 +138,10 @@ return (
              flexDirection:"column",
              marginTop:"150px"
           }}>
+
             {description}
     </Box>
-     <Button  variant='contained'  sx={{
+    <Button  variant='contained'  sx={{
             backgroundColor:"secondary.secondary_600",
             opacity:"0.8",
             color:"white",

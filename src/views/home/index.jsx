@@ -5,7 +5,10 @@ import SecondSectionService from './component/second_section_service'
 
 function HomeView() {
   return (
-    <div>
+    <div  style={{
+      display:"flex",
+      flexDirection:"column"
+      }}>
       <FirstSectionLanding/>
       <SecondSectionService/>
       

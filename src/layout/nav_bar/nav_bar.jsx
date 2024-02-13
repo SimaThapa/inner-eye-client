@@ -80,7 +80,7 @@ function NavBar() {
             width: "100%",
             justifyContent: "space-between",
             alignItems: "center",
-            display: { xs: "none", md: "flex" },
+            display: { xs: "none", md: "flex" }
           }}
         >
           <Box>{renderLogo}</Box>

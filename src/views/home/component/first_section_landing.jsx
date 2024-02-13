@@ -135,7 +135,7 @@ return (
     <Box sx={{
              display: { xs: "none", md: "flex" },
              flexDirection:"column",
-             marginTop:"120px"
+             marginTop:"150px"
           }}>
             {description}
     </Box>
@@ -149,7 +149,8 @@ return (
                       },
             marginTop:"10px",
             display:{xs: "none", md: "flex"},
-            
+            alignItems:"center"
+
             
           }}>
              About Us
@@ -164,7 +165,9 @@ return (
 
     </Box>
 
-  </Box>  
+  </Box> 
+
+
  </div>
   
 </Box>  

@@ -1,10 +1,17 @@
-import React from 'react'
-import { Box, Typography,Button} from '@mui/material'
+import React, { useState } from 'react'
+import { Box, Typography,Button,Dialog,DialogContent,Slide} from '@mui/material'
 import OrangeDivider from "src/components/ui/oragne.divider"
 import ServiceList from './servicelist'
+import RegistrationForm from './registrationFormPopup'
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+        return <Slide direction="up" ref={ref} {...props} />;
+      });
 
 
 function SecondScetionService() {
+        const[openRegistrationDialog,setOpenRegistrationDialog]=useState(false);
+        const[openFreeEbookDialog,setFreeEbookDialog]=useState(false)
   return (
     
     // first div
@@ -45,26 +52,70 @@ function SecondScetionService() {
 
          
            <Box sx={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-           <Button variant="outlined" sx={{
+           <Button variant="outlined"
+             onClick={()=>setOpenRegistrationDialog(true)}
+                 sx={{
                    color:"black",
                    borderColor:"secondary.main",
                    textTransform:"capitalize",
                    fontWeight:"300",
                    margin:"30px",
                    borderRadius:"0px"
-           }}>
+           }}
+           >
                Registration
            </Button>
-           <Button variant="outlined" sx={{
+           <Button variant="outlined" 
+             onClick={()=>setFreeEbookDialog(true)}
+              sx={{
                    color:"black",
                    borderColor:"secondary.main",
                    textTransform:"capitalize",
                    fontWeight:"300",
-                   borderRadius:"0px"
+                   borderRadius:"0px",
+                   
            }}>
                Free Ebook
             </Button>
            </Box>
+
+
+           {/* Registration Dialog */}
+           <Dialog
+                open={openRegistrationDialog}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={()=>setOpenRegistrationDialog(false)}
+                aria-describedby="alert-dialog-slide-description"
+                maxWidth="sm"
+                fullWidth
+
+
+              >
+               
+                <DialogContent>
+                   <RegistrationForm/>
+                </DialogContent>
+                
+              
+      </Dialog>
+
+      {/* FreeEbook Dialog */}
+      <Dialog
+                open={openFreeEbookDialog}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={()=>setFreeEbookDialog(false)}
+                aria-describedby="alert-dialog-slide-description"
+              >
+               
+                <DialogContent>
+                  <h1>FreeEbook</h1>
+                </DialogContent>
+                
+              
+      </Dialog>
+
       </Box>
 
 

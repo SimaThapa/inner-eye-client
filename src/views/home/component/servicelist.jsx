@@ -40,7 +40,7 @@ function ServiceList()
 
  };
     return(
-       <div>
+       <div className="center__carousel">
          <Slider {...settings}>                                     
            <ServiceCard/>
            <ServiceCard/>

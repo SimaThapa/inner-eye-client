@@ -13,7 +13,7 @@ function HomeView() {
           </div>      
       </Box>
       <Box  sx={{backgroundColor:"white"}}>
-        <div>
+        <div className='apply-maxwidth'>
              <SecondSectionService/>
        </div>
                   

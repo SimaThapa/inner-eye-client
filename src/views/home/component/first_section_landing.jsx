@@ -5,10 +5,12 @@ import yoga from "../../../assets/images/yoga.png";
 
 function FirstSectionLanding() {
   return (
-    <Box
+
+<Box
       sx={{
         display: "flex",
-        flexDirection:{sx:"column-reverse" , md:"row" },
+        flexDirection:{xs:"column-reverse" , md:"row" },
+        backgroundColor:"#F3ECF1",
         alignItems: "center",
         justifyContent: "center"
       }}
@@ -79,6 +81,8 @@ function FirstSectionLanding() {
       </p>
     </Box>
  </Box>  
+
+
   );
 }
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import { Card,Typography,CardContent,CardActions,Button } from '@mui/material';
+import { Card,Typography,CardContent } from '@mui/material';
 
 function ServiceCard() {
  return (
-   <Card sx={{ maxWidth: 275,height:230  ,backgroundColor:"secondary.main", padding:" 24px"}}>
+   <Card sx={{ maxWidth:355,height:230  ,backgroundColor:"secondary.main", padding:" 24px",margin:"20px"}}>
    <CardContent >
    <Typography sx={{ fontWeight:"600",color:"#ffffff"}} className='responsive_fontsize20' color="text.secondary" gutterBottom >
       Sound Healing

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Typography,Button} from '@mui/material'
 import OrangeDivider from "src/components/ui/oragne.divider"
-import ServiceCard from './service.card'
+import ServiceList from './servicelist'
 
 
 function SecondScetionService() {
@@ -38,11 +38,8 @@ function SecondScetionService() {
 
           {/* card section       */}
             
-            <Box sx={{
-              display:"flex",
-              
-              }}>
-                <ServiceCard/>
+            <Box>
+                <ServiceList/>
 
                 </Box>
 

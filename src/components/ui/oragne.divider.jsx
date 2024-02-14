@@ -6,22 +6,25 @@ function OgrangeDivider({children}) {
   return (
    
    <Box sx={{display:"flex",
-             alignItems:"center"
+             alignItems:"center",
+             justifyContent:"center"
              }}>
      <Box  sx={{
-      
-      width:"50px",
-      backgroundColor:"accent.main",
-      height:"1px",
+           width:"50px",
+           backgroundColor:"accent.main",
+           height:"1px",
       }}/>
             
     {children}
      
      <Box sx={{ 
+                textAlign:"center",
                 width:"50px",
-                backgroundColor:"accent.main" ,height:"1px"}}>
+                backgroundColor:"accent.main" ,
+                height:"1px"
+              }}/>
             
-     </Box>
+    
   </Box>
 
    

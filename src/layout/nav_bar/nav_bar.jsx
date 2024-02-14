@@ -50,7 +50,9 @@ function NavBar() {
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
-      <Toolbar disableGutters>
+      <Toolbar disableGutters 
+         className="apply-maxwidth"
+         sx={{py:"0",width:"100%"}}>
         {/* START MOBILE VIEW */}
 
         <Box sx={{ display: { xs: "flex", md: "none" } }}>{renderLogo}</Box>
@@ -69,6 +71,8 @@ function NavBar() {
             onClick={toggleMobileDrawer}
           >
             <MenuIcon />
+    
+    
           </IconButton>
         </Box>
 

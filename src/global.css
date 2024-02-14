@@ -1,0 +1,31 @@
+/* responsive font size for 13 to 16 px */
+/* 1rem=16px */
+.responsive_fontsize16{
+      font-size:clamp(0.8125rem,1vw,1rem)                                  
+}
+
+/* clamp(minimum,current,maximum) */
+.responsive_fontsize20{
+   font-size: clamp(1rem, 2vw+0.5rem,1.25rem);                                     
+}
+.responsive_fontsize18{
+  font-size: clamp(0.95rem, 2vw+0.5rem,1.125rem);                                     
+}
+
+
+.responsive_fontsize14{
+   font-size: clamp(0.75rem, 2vw+0.5rem,0.87rem);                                     
+}
+
+.responsive_fontsize32{
+   font-size: clamp(1.8rem, 2vw + 0.5rem,2rem) !important;                                     
+}
+
+/* for 16px */
+
+.apply-maxwidth{
+     max-width:"1536px"; 
+     margin-left: auto;
+     margin-right: auto;
+     padding: 1rem;                                  
+}

@@ -1,66 +1,80 @@
 import React from 'react'
-import { Box, Typography} from '@mui/material'
+import { Box, Typography,Button} from '@mui/material'
+import OrangeDivider from "src/components/ui/oragne.divider"
+import ServiceCard from './service.card'
+
+
 function SecondScetionService() {
   return (
+    
     // first div
-    <div>
+   <Box >
+   
       {/* second div */}
-        <Box sx={{
-                  width:"100%",
-                  height: "464px",
-                  top: "55px",
-                  left: "142px",
-                  display:"flex",
-                   justifyContent:"center",
-                  // alignItems:"center",
-                  border:"2px solid black"
-                 
+      <Box sx={{
+               display:"flex", 
+               flexDirection:"column",
+               justifyContent:"center",
+               alignItems:"center"
           }}>
-            <Typography sx={{ fontFamily: "Arial",
-                              fontSize:" 13px",
-                              fontWeight:"400",
-                              lineHeight:"18px",
-                              letterSpacing: "4px",
-                              textAlign:" center"
-                              
-                          }}>
-                            Best Service
-            </Typography>
-            <Typography sx={{fontFamily: "Times New Roman",
-                            fontSize:" 32px",
-                            fontWeight:"700",
-                            lineHeight:" 45px",
-                            letterSpacing: "0.25px",
-                            textAlign:" center",
-                            paddingTop:"40px",
-                             paddingRight:"200px"
-                              
-                          }}>
-                             Services
-            </Typography>
+         <OrangeDivider>
+              <Typography style={{
+                      fontSize:"13px",
+                      letterSpacing:"4px",
+                      color:"secondary.secondary_600",
+                      fontFamily:"arial"}}>Best services</Typography>
+              </OrangeDivider>
+              <Typography className='responsive_fontsize32' 
+                          sx={{color:"secondary.secondary_400",
+                          fontFamily:"Times New Roman",
+                          fontWeight:"bold",
+                          letterSpacing:"0.25rem",
+                          lineHeight:"42px",
+                          
+                          }} >
+                 services
+                </Typography>
+       </Box>
+
+          {/* card section       */}
+            
             <Box sx={{
               display:"flex",
               
               }}>
-                <Box sx={{
-                  height:"100px",
-                  width:"100px",
-                  backgroundColor:"purple"
-                 }}>
+                <ServiceCard/>
 
                 </Box>
-                <Box>
 
-                </Box>
-                <Box>
+         
+           <Box sx={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+           <Button variant="outlined" sx={{
+                   color:"black",
+                   borderColor:"secondary.main",
+                   textTransform:"capitalize",
+                   fontWeight:"300",
+                   margin:"30px",
+                   borderRadius:"0px"
+           }}>
+               Registration
+           </Button>
+           <Button variant="outlined" sx={{
+                   color:"black",
+                   borderColor:"secondary.main",
+                   textTransform:"capitalize",
+                   fontWeight:"300",
+                   borderRadius:"0px"
+           }}>
+               Free Ebook
+            </Button>
+           </Box>
+      </Box>
 
-                </Box>
-            </Box>
 
                               
                           
-        </Box>
-    </div>
+  
+    
   )
 }
 

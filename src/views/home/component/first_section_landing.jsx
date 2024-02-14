@@ -1,6 +1,7 @@
 import React from 'react'
 import YogaImage from '../../../assets/images/yoga.png'
-import { Button ,Box,Typography} from '@mui/material'
+import { Button ,Box} from '@mui/material'
+import OgrangeDivider from 'src/components/ui/oragne.divider';
 
 function FirstSectionLanding() {
 const description=(
@@ -13,30 +14,24 @@ const description=(
           fontStyle:"Roboto Serif"
 
       }}>
-        INNER EYE
+    
+        <p> INNER EYE </p>
       </div>
 
-      <Typography variant="subtitle1" gutterBottom 
-        sx={{
-        fontFamily: "Roboto Serif",
-        fontSize: "20px",
-        fontWeight: "200",
-        width:"100%",
-        letterSpacing: "0em",
-        // border:"2px solid black"
-      }}
+
+      <p className='responsive_fontsize20'
         >
             Nestled in the lap of the Himalayas in Nepal, Inner Eye is not just a retreat; 
             it's a sanctuary for the mind, body, and spirit. 
             Our personalized packages cater to your unique needs, offering a blend of yoga, meditation, sound healing, breath work, naval treatment, psychosocial counseling, spiritual counseling, and past life regression.
             At Inner Eye, our commitment goes beyond providing a retreat experience.
             We empower you to integrate wellness into your everyday life. Join us on this transformative journey, and let the Inner Eye guide you to a life of balance, clarity, and inner harmony.
-      </Typography>
+      </p>
  </Box>     
 );
-const Image=(
+const image=(
 <Box>
-       <img src={YogaImage} alt="yoga"  style={{maxHeight:"530px", marginTop:"30px"}}/>
+       <img src={YogaImage} alt="yoga"  style={{marginTop:"30px"}}/>
        <Box sx={{
               width: "728px",
               fontFamily: "Roboto Serif",
@@ -60,34 +55,31 @@ return (
 
 //main box
 <Box sx={{
-  paddingLeft:"70px",
-  paddingRight:"70px",
-  backgroundColor:"#F3ECF1"
+  backgroundColor:"#F3ECF1",
+  flexDirection:{sx:'column-reverse', md:"row"}
   
 }}> 
+
 {/* mobile view */}
+
 {/* image and description div */}
  <div style={
       {
         display:"flex",
         justifyContent:"center",
-        alignItems:"center",
-        // flexDirection:"column"
+        alignItems:"center"
         
-    }}>
- <Box sx={{ display: { xs: "flex", md: "none" },
-        flexDirection:"column"
-        }}
+      }}>
+    <Box sx={{ display: { xs: "flex", md: "none" },
+              flexDirection:"column"
+            }}
         >
 
 
       {/* left side */}
-      <Box sx={{
-       
-       
-        }}>
+      <Box>
 
-             {Image}
+             {image}
 
       </Box>
 
@@ -95,20 +87,17 @@ return (
               maxWidth:"40rem", 
               width :"100%",
               textAlign:"center",
-              height: "231px",
               
          }}>
-             
+         <Box>   
           <Box sx={{
              display: { xs: "flex", md: "flex" },
              flexDirection:"column",
              marginTop:"20px"
           }}>
             {description}
-          </Box>
-             
 
-         <Button  variant='contained'  sx={{
+            <Button  variant='contained'  sx={{
             backgroundColor:"secondary.secondary_600",
             opacity:"0.8",
             color:"white",
@@ -116,12 +105,16 @@ return (
             "&:hover":{
               backgroundColor:"Black"
             },
-            marginTop:"10px"
-            
+           
           }}>
-             About Us
+                About Us
           
         </Button>  
+          </Box>
+             
+
+         
+      </Box>   
       </div>
   </Box> 
 

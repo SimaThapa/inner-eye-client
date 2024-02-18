@@ -3,6 +3,7 @@ import { Box, Typography,Button,Dialog,DialogContent,Slide} from '@mui/material'
 import OrangeDivider from "src/components/ui/oragne.divider"
 import ServiceList from './servicelist'
 import RegistrationForm from './registrationFormPopup'
+import FreeEbookRegistration from './FreeEbookForm'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
         return <Slide direction="up" ref={ref} {...props} />;
@@ -107,10 +108,12 @@ function SecondScetionService() {
                 keepMounted
                 onClose={()=>setFreeEbookDialog(false)}
                 aria-describedby="alert-dialog-slide-description"
+                maxWidth="xs"
+                fullWidth
               >
                
                 <DialogContent>
-                  <h1>FreeEbook</h1>
+                  <h1><FreeEbookRegistration/></h1>
                 </DialogContent>
                 
               

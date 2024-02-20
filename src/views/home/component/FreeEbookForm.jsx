@@ -1,98 +1,61 @@
-import React from 'react'
-import{Box,TextField,Grid,Button} from '@mui/material'
+import React from 'react';
+import { Box, Typography, TextField, Button } from "@mui/material";
+import { useState } from "react";
 
-function FreeEbookForm() {
-  return (
-    <div>
-      <Box sx={{color:"secondary.main",
-                display:"flex",
-                flexDirection:"column",
-                justifyContent:'center',
-                alignItems:"center",
-                margin:"16px",
-               }}>
-        <p className='responsive_fontsize18' 
-            style={{fontWeight:"600",
-                    marginBottom:"7px"
-                    }}
-        >
-                INNER EYE
-        </p>
-        <p className='responsive_fontsize14' 
-            sx={{color:"#6A1067", 
-                fontWeight:"300",
-                fontFamily:"Roboto Serif",
-                marginBottom:"31px"
-                
-            }}
-        >
-                    Request for free Ebook
-        </p>
-        </Box>
-        {/* form start */}
-        <Box>
-            <form style={{display:"flex",flexDirection:"column"}}> 
-             <Grid
-                container
-                rowSpacing={4}
-                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-                sx={{display:"flex",flexDirection:"column"}}
-              >
-              <Grid  item xs={6} md={8} sx={{
-                display: "flex",
-                justifyContent: "center",
-              }}>
-                    <TextField
-                        fullWidth
-                        type="text"
-                        id="outlined-basic"
-                        label="Full Name"
-                        variant="outlined"
-                        size="small"
-                        sx={{ maxWidth: { xs: "100%", md: "14rem" ,     textAlign:"center"} }}
-                    />
-                </Grid>
-                <Grid  item xs={6} md={8}>
-                    <TextField
-                        fullWidth
-                        type="number"
-                        id="outlined-basic"
-                        label="Mobile Number"
-                        variant="outlined"
-                        sx={{ maxWidth: { xs: "100%", md: "14rem" ,textAlign:"center"} }}
-                        size="small"
-                    />
-                </Grid>
-                <Grid  item xs={6} md={8}>
-                    <TextField
-                        fullWidth
-                        type="email"
-                        id="outlined-basic"
-                        label="Email"
-                        variant="outlined"
-                        sx={{ maxWidth: { xs: "100%", md: "14rem",textAlign:"center" } }}
-                        size="small"
-                    />
-                </Grid>
-                <Grid item xs={12}
+function FreeEbookFormPopUp() {
+    const [fullName, setFullName] = useState("");
+    const [mobileNumber, setMobileNumber] = useState("");
+    const [email, setEmail] = useState("");
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("data", fullName, email, mobileNumber);
+
+
+    }
+    return (
+        <>
+            <form onSubmit={handleSubmit}>
+                <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                    <Typography
+                        className="responsive__fontsize18"
                         sx={{
-                            display: "flex",
-                            justifyContent: "center",
-                    }}>
-                     <Button
-                        variant="contained"
-                        sx={{ backgroundColor: "secondary.main", color: "white" }}
-                     >
-                             Register
-                    </Button>
-              </Grid>
-              </Grid>  
-            </form>
-        </Box>
+                            fontWeight: "600",
+                            lineHeight: "21px",
+                            color: "secondary.secondary_600",
+                            textTransform: "uppercase",
+                        }}
+                    >
+                        INNER EYE
+                    </Typography>
+                    <Typography
+                        sx={{
+                            fontWeight: "300",
+                            color: "secondary.secondary_600",
+                            mt: "7px",
+                        }}
+                        className="responsive__fontsize14"
+                    >
+                        Request For Free Ebook
+                    </Typography>
+                </Box>
 
-      
-    </div>
-  )
+                <Box mt="1rem" sx={{ display: "flex", flexDirection: "column" }}>
+                    <TextField id="full-name" label="Full Name" variant="outlined" size="small" margin="dense" value={fullName}
+                        onChange={(e) => setFullName(e.target.value)} />
+
+                    <TextField fullWidth type="tel" id="mobile-number" label="Mobile Number" variant="outlined" size="small" margin="dense" value={mobileNumber}
+                        onChange={(e) => setMobileNumber(e.target.value)} />
+
+                    <TextField fullWidth type="email" id="email" label="Email" variant="outlined" size="small" margin="dense" value={email}
+                        onChange={(e) => setEmail(e.target.value)} />
+
+                    <Button type="submit" variant="contained" sx={{ backgroundColor: "secondary.main", color: "white" }}>
+                        Submit
+                    </Button>
+                </Box>
+            </form>
+        </>
+    );
 }
 
-export default FreeEbookForm
+export default FreeEbookFormPopUp;

@@ -1,6 +1,7 @@
 import React from 'react'
 import FirstSectionLanding from './component/first_section_landing'
 import SecondSectionService from './component/second_section_service'
+import ThirdSectionPodcast from './component/third_section'
 import {Box} from '@mui/material'
 
 
@@ -18,7 +19,13 @@ function HomeView() {
        </div>
                   
       </Box>
-         
+      <Box  sx={{backgroundColor:"white"}}>
+        <div className='apply-maxwidth'>
+             <ThirdSectionPodcast/>
+       </div>
+                  
+      </Box>
+      
       
     </main>
   )

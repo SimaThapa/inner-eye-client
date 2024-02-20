@@ -4,6 +4,8 @@ import OrangeDivider from "src/components/ui/oragne.divider"
 import ServiceList from './servicelist'
 import RegistrationForm from './registrationFormPopup'
 import FreeEbookRegistration from './FreeEbookForm'
+// import { useSelector } from 'react-redux'
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
         return <Slide direction="up" ref={ref} {...props} />;
@@ -13,11 +15,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function SecondScetionService() {
         const[openRegistrationDialog,setOpenRegistrationDialog]=useState(false);
         const[openFreeEbookDialog,setFreeEbookDialog]=useState(false)
+        
+
   return (
     
     // first div
    <Box >
-   
+        
       {/* second div */}
       <Box sx={{
                display:"flex", 
@@ -103,14 +107,14 @@ function SecondScetionService() {
 
       {/* FreeEbook Dialog */}
       <Dialog
-                open={openFreeEbookDialog}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={()=>setFreeEbookDialog(false)}
-                aria-describedby="alert-dialog-slide-description"
-                maxWidth="xs"
-                fullWidth
-              >
+          open={openFreeEbookDialog}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={()=>setFreeEbookDialog(false)}
+          aria-describedby="alert-dialog-slide-description"
+          maxWidth="xs"
+          fullWidth
+      >
                
                 <DialogContent>
                   <h1><FreeEbookRegistration/></h1>
@@ -119,7 +123,7 @@ function SecondScetionService() {
               
       </Dialog>
 
-      </Box>
+    </Box>
 
 
                               

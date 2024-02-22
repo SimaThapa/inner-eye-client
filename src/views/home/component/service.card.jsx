@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card,Typography,CardContent } from '@mui/material';
 
-function ServiceCard() {
+function ServiceCard({item}) {
  return (
    <Card sx={{ maxWidth:355,height:230  ,backgroundColor:"secondary.main", padding:" 24px",margin:"20px"}}>
    <CardContent >

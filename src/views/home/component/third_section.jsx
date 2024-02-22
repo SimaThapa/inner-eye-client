@@ -1,64 +1,59 @@
-import React from 'react'
-import { Box, Typography} from '@mui/material'
-import OrangeDivider from "src/components/ui/oragne.divider"
-import PodcastCard from "src/cards/podcast_card" 
-
-
-
-// const Transition = React.forwardRef(function Transition(props, ref) {
-
-//         return <Slide direction="up" ref={ref} {...props} />;
-//       });
+import React from "react";
+import { Box, Typography } from "@mui/material";
+import OrangeDivider from "src/components/ui/oragne.divider";
+import PodcastList from "./podcast_list";
 
 
 function ThirdSectionPodcast() {
-
   return (
-    
-    // first div
-   <Box >
-       
-      <Box sx={{
-               display:"flex", 
-               flexDirection:"column",
-               justifyContent:"center",
-               alignItems:"center"
-          }}>
-         <OrangeDivider>
-              <Typography style={{
-                      fontSize:"13px",
-                      letterSpacing:"4px",
-                      color:"secondary.secondary_600",
-                      fontFamily:"arial"}}>Mental health, spirituality & holistic healing
-                </Typography>
+    <Box sx={{ gap: "140px" }}>
+      {/* first box */}
+
+      <Box
+        sx={{
+          // backgroundColor: "green",
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "68px",
+        }}
+      >
+        <OrangeDivider>
+          <Typography
+            sx={{
+              fontSize: "13px",
+              letterSpacing: "3px",
+              color: "secondary.secondary_600",
+              //   fontFamily: "arial",
+              lineHeight: "18px",
+            }}
+          >
+            MENTAL HEALTH, SPIRITUALITY & HOLISTIC HEALING
+          </Typography>
         </OrangeDivider>
-              <Typography className='responsive_fontsize32' 
-                          sx={{color:"secondary.secondary_400",
-                          fontFamily:"Times New Roman",
-                          fontWeight:"bold",
-                          letterSpacing:"0.25rem",
-                          lineHeight:"42px",
-                          
-                        }}
-                >
-                              Podcast
-                </Typography>
-       </Box>
+        <Typography
+          variant="h3"
+          className="responsive_fontSize32"
+          sx={{
+            color: "secondary.secondary_400",
+            fontWeight: "bold",
+            letterSpacing: "0.25px",
+            lineHeight: "43px",
+            fontFamily: "Times New Roman",
+            mb: "11px",
+          }}
+        >
+          Podcast
+        </Typography>
+      </Box>
+      {/* second Box */}
+      <Box >
+        <PodcastList/>
 
-          {/* card section       */}
-            
-            <Box>
-                <PodcastCard/>
-
-                </Box>
-
-         
-         
+      </Box>
     </Box>
-
-
-                              
- )
+  );
 }
 
-export default ThirdSectionPodcast
+export default ThirdSectionPodcast;

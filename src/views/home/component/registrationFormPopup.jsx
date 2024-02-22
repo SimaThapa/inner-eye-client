@@ -18,6 +18,8 @@ import {
   Grid,
 } from "@mui/material";
 import { ContactSupportOutlined } from "@mui/icons-material";
+import { addRegistation } from "src/redux/api/home_slice";
+import { useDispatch } from "react-redux";
 
 function RegistrationFormPopup() {
   const[name,setName]=useState("");
@@ -33,7 +35,7 @@ function RegistrationFormPopup() {
   const[teamSize,setTeamSize]=useState("single");
   const[memberNumber,setMemberNumber]=useState("");
   const[isTermsChecked,setIsTermsChecked]=useState("");
-  
+  const dispatch=useDispatch()
   const handleSubmit=(e)=>{
     e.preventDefault(); //prevent page from refresh
     
@@ -51,8 +53,12 @@ function RegistrationFormPopup() {
       memberNumber,
       isTermsChecked
     };
-     console.log("data",name,gender,age,email,phoneNumber,occupation,medicalHistory,packageType,affiliations,teamSize,memberNumber,isTermsChecked);
+    //  console.log("data",name,gender,age,email,phoneNumber,occupation,medicalHistory,packageType,affiliations,teamSize,memberNumber,isTermsChecked);
+   console.log("data",data);
 
+  //  send the data to database
+    
+   dispatch(addRegistation(data))
   }
  
 

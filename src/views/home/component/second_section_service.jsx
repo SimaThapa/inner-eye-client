@@ -1,136 +1,160 @@
-import React, { useState } from 'react'
-import { Box, Typography,Button,Dialog,DialogContent,Slide} from '@mui/material'
-import OrangeDivider from "src/components/ui/oragne.divider"
-import ServiceList from './servicelist'
-import RegistrationForm from './registrationFormPopup'
-import FreeEbookRegistration from './FreeEbookForm'
-// import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  Box,
+  Typography,
+  Button,
+  Dialog,
+  DialogContent,
+  Slide,
+  CircularProgress,
+} from "@mui/material";
+
+import { fetchServiceList } from "src/redux/api/home_slice";
+
+import OrangeDivider from "src/components/ui/oragne.divider";
+import ServiceList from "./servicelist";
+import RegistrationFormPopup from "./registrationFormPopup";
+import FreeBookFormPopup from "./FreeEbookForm";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-        return <Slide direction="up" ref={ref} {...props} />;
-      });
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
+function SecondSectionServices() {
+  const dispatch = useDispatch();
 
-function SecondScetionService() {
-        const[openRegistrationDialog,setOpenRegistrationDialog]=useState(false);
-        const[openFreeEbookDialog,setFreeEbookDialog]=useState(false)
-        
+  const isServiceListLoading = useSelector(
+    (state) => state.home?.isServiceListLoading
+  );
+  const serviceList = useSelector((state) => state.home?.serviceList);
+
+  const [openRegistrationDialog, setOpenRegistrationDialog] = useState(false);
+  const [openFreeBookDialog, setOpenFreeBookDialog] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchServiceList());
+  }, [dispatch]);
+
+  console.log("service list state", isServiceListLoading, serviceList);
 
   return (
-    
-    // first div
-   <Box >
-        
-      {/* second div */}
-      <Box sx={{
-               display:"flex", 
-               flexDirection:"column",
-               justifyContent:"center",
-               alignItems:"center"
-          }}>
-         <OrangeDivider>
-              <Typography style={{
-                      fontSize:"13px",
-                      letterSpacing:"4px",
-                      color:"secondary.secondary_600",
-                      fontFamily:"arial"}}>Best services</Typography>
-              </OrangeDivider>
-              <Typography className='responsive_fontsize32' 
-                          sx={{color:"secondary.secondary_400",
-                          fontFamily:"Times New Roman",
-                          fontWeight:"bold",
-                          letterSpacing:"0.25rem",
-                          lineHeight:"42px",
-                          
-                          }} >
-                 services
-                </Typography>
-       </Box>
+    <Box>
+      {/* First Box */}
 
-          {/* card section       */}
-            
-            <Box>
-                <ServiceList/>
-
-                </Box>
-
-         
-           <Box sx={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-           <Button variant="outlined"
-             onClick={()=>setOpenRegistrationDialog(true)}
-                 sx={{
-                   color:"black",
-                   borderColor:"secondary.main",
-                   textTransform:"capitalize",
-                   fontWeight:"300",
-                   margin:"30px",
-                   borderRadius:"0px"
-           }}
-           >
-               Registration
-           </Button>
-           <Button variant="outlined" 
-             onClick={()=>setFreeEbookDialog(true)}
-              sx={{
-                   color:"black",
-                   borderColor:"secondary.main",
-                   textTransform:"capitalize",
-                   fontWeight:"300",
-                   borderRadius:"0px",
-                   
-           }}>
-               Free Ebook
-            </Button>
-           </Box>
-
-
-           {/* Registration Dialog */}
-           <Dialog
-                open={openRegistrationDialog}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={()=>setOpenRegistrationDialog(false)}
-                aria-describedby="alert-dialog-slide-description"
-                maxWidth="sm"
-                fullWidth
-
-
-              >
-               
-                <DialogContent>
-                   <RegistrationForm/>
-                </DialogContent>
-                
-              
-      </Dialog>
-
-      {/* FreeEbook Dialog */}
-      <Dialog
-          open={openFreeEbookDialog}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={()=>setFreeEbookDialog(false)}
-          aria-describedby="alert-dialog-slide-description"
-          maxWidth="xs"
-          fullWidth
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
       >
-               
-                <DialogContent>
-                  <h1><FreeEbookRegistration/></h1>
-                </DialogContent>
-                
-              
+        <OrangeDivider>
+          <Typography
+            sx={{
+              fontSize: "13px",
+              letterSpacing: "4px",
+              color: "secondary.secondary_600",
+              fontFamily: "Arial",
+            }}
+          >
+            Best Services
+          </Typography>
+        </OrangeDivider>
+
+        <Typography
+          variant="h3"
+          className="responsive__fontsize32"
+          sx={{
+            color: "secondary.secondary_400",
+            fontWeight: "bold",
+            letterSpacing: "0.25px",
+            lineHeight: "42px",
+            fontFamily: "Times New Roman",
+          }}
+        >
+          Services
+        </Typography>
+      </Box>
+      
+      {/* Second Box */}
+
+      <Box>
+        {isServiceListLoading ? (
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress sx={{ color: "red" }} />
+          </Box>
+        ) : (
+          <ServiceList serviceList={serviceList} />
+        )}
+      </Box>
+
+      {/* Third Box */}
+
+      <Box sx={{ display: "flex", justifyContent: "center", gap: "30px" }}>
+        <Button
+          variant="outlined"
+          sx={{
+            color: "black",
+            borderColor: "secondary.main",
+            textTransform: "capitalize",
+            fontWeight: "300",
+            lineHeight: "21px",
+            borderRadius: "0",
+          }}
+          className="responsive__fontsize18"
+          onClick={() => setOpenRegistrationDialog(true)}
+        >
+          Registration
+        </Button>
+        <Button
+          variant="outlined"
+          sx={{
+            color: "black",
+            borderColor: "secondary.main",
+            textTransform: "capitalize",
+            fontWeight: "300",
+            lineHeight: "21px",
+            borderRadius: "0",
+          }}
+          className="responsive__fontsize18"
+          onClick={() => setOpenFreeBookDialog(true)}
+        >
+          Free EBook
+        </Button>
+      </Box>
+      {/* Registration Dialog */}
+      <Dialog
+        open={openRegistrationDialog}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => setOpenRegistrationDialog(false)}
+        aria-describedby="alert-dialog-slide-description"
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogContent>
+          <RegistrationFormPopup />
+        </DialogContent>
       </Dialog>
+      {/* Free EBook Dialog */}
 
+      <Dialog
+        open={openFreeBookDialog}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => setOpenFreeBookDialog(false)}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogContent>
+          <FreeBookFormPopup />
+        </DialogContent>
+      </Dialog>
     </Box>
-
-
-                              
-                          
-  
-    
-  )
+  );
 }
 
-export default SecondScetionService
+export default SecondSectionServices;

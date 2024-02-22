@@ -1,64 +1,136 @@
-import { createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+import axios from "axios";
+
+import { BASE_URL } from "src/config/base_url";
 
 const initialState = {
-  value: 0,
-  name:"hello",
-  age:30,
-}
+  value: 1000,
+  name: "hello",
+  age: 49,
 
-//create the async thunk
-const fetchUserById = createAsyncThunk(
-  'home/fetchServiceList',
-  async (_, {rejectWithValue}) => {
+  isServiceListLoading: false,
+  serviceList: [],
+  serviceListError: null,
+
+  isRegistrationLoading: false,
+  isGallaryListLoading:false,
+  gallaryList:[],
+  gallaryListError:null
+};
+
+// Fetch Service List
+export const fetchServiceList = createAsyncThunk(
+  "home/fetchServiceList",
+  async (_, { rejectWithValue }) => {
+    // api
+
     try {
-      const response=await axios.get("api url");
-      if(response?.status==200){
-        return response?.data
+      const response = await axios.get(`${BASE_URL}/service`);
+
+      console.log("service response", response);
+
+      if (response?.status === 200) {
+        return response?.data?.data;
       }
-    } catch (error) {
-      const errorMessage=err?.response?.data?.message||"could not fetch service list"
-      return rejectWithValue(errorMessage)
+    } catch (err) {
+      const errorMessage =
+        err?.response?.data?.message || "Could not fetch Service list";
+      return rejectWithValue(errorMessage);
     }
-   
-  },
-)
-export const counterSlice= createSlice({
-  name: 'home',
-  initialState,
-  reducers: {
-    increment: (state) => {
+  }
+);
+// Add Registration
 
-      state.value += 1
-      
-    },
-    decrement: (state) => {
-      state.value -= 1
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
-    },
-    incrementByAge:(state)=>{
-      state.age += 1                                   
-    },
-    decrementByAmount:(state,action)=>{
-        state.value-=action.payload   
-    },
-    decrementAge:(state)=>{
-        state.age -=1
-    },
-  },
-  extraReducers: (builder) => {
+export const addRegistation = createAsyncThunk(
+  "home/addRegistration",
+  async (data, { rejectWithValue }) => {
+    // api
+
+    console.log("sending data to databse");
+    try {
+      const response = await axios.post(`${BASE_URL}/registration`, {data});
+
+      console.log("register resposne ", response);
+
+      if (response?.status === 200) {
+        return response?.data?.data;
+      }
+    } catch (err) {
+      const errorMessage = err?.response?.data?.message || "Failed to register";
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
+
+
+//fetch gallary list
+export const fetchGallaryList = createAsyncThunk(
+  "home/fetchGallaryList",
+  async (_, { rejectWithValue }) => {
     
-    // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(fetchUserById.fulfilled, (state, action) => {
-      // Add user to the state array
-      state.entities.push(action.payload)
-    })
+
+    try {
+      const response = await axios.get(`${BASE_URL}/gallary`);
+
+      console.log("gallary response", response);
+
+      if (response?.status === 200) {
+        return response?.data?.data;
+      }
+    } catch (err) {
+      const errorMessage =
+        err?.response?.data?.message || "Could not fetch Service list";
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const homeSlice = createSlice({
+  name: "home",
+  initialState,
+
+ 
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchServiceList.pending, (state) => {
+        state.isServiceListLoading = true;
+      })
+      .addCase(fetchServiceList.fulfilled, (state, action) => {
+        state.isServiceListLoading = false;
+        state.serviceList = action?.payload;
+      })
+      .addCase(fetchServiceList.rejected, (state, action) => {
+        state.isServiceListLoading = false;
+        state.serviceListError = action?.payload;
+      })
+      // Add registration
+      .addCase(addRegistation.pending, (state) => {
+        state.isRegistrationLoading = true;
+      })
+      .addCase(addRegistation.fulfilled, (state, action) => {
+        state.isRegistrationLoading = false;
+      })
+      .addCase(addRegistation.rejected, (state, action) => {
+        state.isRegistrationLoading = false;
+      })
+
+  //fetch gallary list
+      .addCase(fetchGallaryList.pending, (state) => {
+        state.isGallaryListLoading = true;
+      })
+      .addCase(fetchGallaryList.fulfilled, (state, action) => {
+        state.isGallaryListLoading = false;
+        state.gallaryList = action?.payload;
+      })
+      .addCase(fetchGallaryList.rejected, (state, action) => {
+        state.isGallaryListLoading = false;
+        state.gallaryListError = action?.payload;
+      })
   },
-})
+});
 
-// // Action creators are generated for each case reducer function
-// export const { increment, decrement, incrementByAmount ,decrementByAmount,decrementAge,incrementByAge} = counterSlice.actions
+// Action creators are generated for each case reducer function
+export const { increment, decrement, incrementByAmount } = homeSlice.actions;
 
-export default counterSlice.reducer
+export default homeSlice.reducer;

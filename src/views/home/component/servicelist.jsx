@@ -2,7 +2,7 @@ import React from "react";
 import ServiceCard from './service.card'
 import Slider from 'react-slick'
 
-function ServiceList()
+function ServiceList({serviceList})
 {
    const settings = {
           dots: true,
@@ -39,15 +39,13 @@ function ServiceList()
          ]
 
  };
+ 
     return(
        <div className="center__carousel">
          <Slider {...settings}>                                     
-           <ServiceCard/>
-           <ServiceCard/>
-           <ServiceCard/>
-           <ServiceCard/>
-           <ServiceCard/>
-           <ServiceCard/>
+           {serviceList?.map((item)=>{
+             return  <ServiceCard key={item._id} item={item}/>
+           })}
            
            </Slider>    
        </div>

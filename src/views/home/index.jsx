@@ -1,9 +1,11 @@
 import React from 'react'
 import FirstSectionLanding from './component/first_section_landing'
 import SecondSectionService from './component/second_section_service'
-import ThirdSectionPodcast from './component/third_section'
+import ThirdSectionPodcast from './component/third_section_podcast'
 import GallaryList from './component/fourth_section_gallary'
+import AboutUs from './component/seventh_section'
 import {Box} from '@mui/material'
+import ContactSection from './component/contact_section'
 
 
 function HomeView() {
@@ -29,6 +31,18 @@ function HomeView() {
       <Box  sx={{backgroundColor:"white"}}>
         <div className='apply-maxwidth'>
              <GallaryList/>
+       </div>
+                  
+      </Box>
+      <Box  sx={{backgroundColor:"white"}}>
+        <div className='apply-maxwidth'>
+             <AboutUs/>
+       </div>
+                  
+      </Box>
+      <Box  sx={{backgroundColor:"primary.main"}}>
+        <div className='apply-maxwidth'>
+             <ContactSection/>
        </div>
                   
       </Box>

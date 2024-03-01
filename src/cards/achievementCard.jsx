@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 
-function AchievementCard() {
+function AchievementCard({title,total}) {
   return (
     <Box sx={{
         maxWidth:"150px",
@@ -22,7 +22,7 @@ function AchievementCard() {
                         letterSpacing:"3px"
                     }}
         >
-            200+                            
+            {total}+                            
         </Typography>
 
         <Typography  className='responsive_fontsize20'
@@ -31,7 +31,7 @@ function AchievementCard() {
                         letterSpacing:"3px"
                     }}
         >
-            Client                            
+            {title}+                            
         </Typography>
       </Box> 
     </Box>

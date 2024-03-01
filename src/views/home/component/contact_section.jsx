@@ -54,9 +54,9 @@ function ContactSection() {
                     mt:"40px"
                 }}
             >
-              <AchievementCard/>
-              <AchievementCard/>
-              <AchievementCard/>
+              <AchievementCard title="Client" total={200}/>
+              <AchievementCard title="Training" total={20}/>
+              <AchievementCard title="Country" total={20}/>
            </Box>
      </Box>   
            {/* right section */}
